@@ -1,10 +1,4 @@
 import express from "express";
-import path from "path";
-
-import __dirname from "./dirname.js";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import express from "express";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import cookieParser from "cookie-parser";
@@ -23,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/weeks", router);
+app.use("/users", router);
 
 /** DO NOT CHANGE THIS ROUTE - it serves our front-end */
 app.get("/", function (req, res, next) {
@@ -31,4 +25,3 @@ app.get("/", function (req, res, next) {
 });
 
 export default app;
-//example

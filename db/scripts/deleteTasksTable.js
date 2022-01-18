@@ -1,6 +1,6 @@
 import query from "../index.js";
-import weeks from "../../libs/data.js";
-import sampleInfo from "../../libs/data.js";
+// import weeks from "../../libs/data.js";
+// import information from "../../libs/data.js";
 
 const sqlString = `DROP TABLE weeks;`;
 const sqlString2 = `DROP TABLE information;`;

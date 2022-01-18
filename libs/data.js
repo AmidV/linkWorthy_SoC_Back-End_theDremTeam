@@ -1,4 +1,4 @@
-export const weeks_table = [
+export const weeks = [
   {
     id: 1,
     topic: "Foundations",
@@ -65,7 +65,7 @@ export const weeks_table = [
   },
 ];
 
-export const sampleInfo = [
+export const information = [
   {
     id: 1,
     week: 1,
