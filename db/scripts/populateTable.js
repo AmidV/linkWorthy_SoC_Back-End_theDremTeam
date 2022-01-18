@@ -1,18 +1,34 @@
 import query from "../index.js";
-import cats from "../../cats-data.js";
+import weeks from "../../libs/data.js";
+import sampleInfo from "../../libs/data.js";
 
 async function populateTable() {
-  for (let i = 0; i < cats.length; i++) {
-    const name = cats[i].name;
-    const human = cats[i].human;
-    const hobby = cats[i].hobby;
+  for (let i = 0; i < weeks.length; i++) {
+    const topic = weeks[i].topic;
 
     const res = await query(
-      `INSERT INTO cats (name, human, hobby) VALUES ($1, $2, $3) RETURNING name`,
-      [name, human, hobby]
+      `INSERT INTO weeks (topic) VALUES ($1) RETURNING *`,
+      [topic]
+    );
+    console.log(res);
+  }
+}
+
+async function populateTable2() {
+  for (let i = 0; i < sampleInfo.length; i++) {
+    const week = sampleInfo[i].week;
+    const tags = sampleInfo[i].tags;
+    const summary = sampleInfo[i].summary;
+    const link = sampleInfo[i].link;
+    const isComplete = sampleInfo[i].isComplete;
+
+    const res = await query(
+      `INSERT INTO information (week, tags, summary, link, isComplete) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      [week, tags, summary, link, isComplete]
     );
     console.log(res);
   }
 }
 
 populateTable();
+populateTable2();
