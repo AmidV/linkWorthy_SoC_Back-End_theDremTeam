@@ -4,7 +4,7 @@ import path, { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 
-import router from "./routes/users.js";
+import router from "./routes/weeks.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,11 +17,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/users", router);
+app.use("/weeks", router);
 
 /** DO NOT CHANGE THIS ROUTE - it serves our front-end */
 app.get("/", function (req, res, next) {
-  res.render("index", { title: "Books" });
+	res.render("index", { title: "Books" });
 });
 
 export default app;
