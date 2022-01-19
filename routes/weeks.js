@@ -16,10 +16,17 @@ router.get("/", async (req, res) => {
   res.json({ success: true, message: `all weeks`, payload: allWeeks });
 });
 
-// GET specific cat by id
+router.get("/allweeks", async (req, res) => {
+  //Example: localhost:3000/cats/
+  const allNotes = await getAllNotes();
+
+  res.json({ success: true, message: `all weeks' notes`, payload: allNotes });
+});
+
+// GET specific week by id
 router.get("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const requestedNotes = await getWeekNotes(id);
+  const week = Number(req.params.id);
+  const requestedNotes = await getWeekNotes(week);
   res.json({
     success: true,
     message: `Found Note ${id}`,
@@ -47,14 +54,7 @@ router.post("/:id", async function (req, res) {
   });
 });
 
-router.get("/information", async (req, res) => {
-  //Example: localhost:3000/cats/
-  const allNotes = await getAllNotes();
-
-  res.json({ success: true, message: `all notes`, payload: allNotes });
-});
-
-router.delete("/information/:id", async function (req, res) {
+router.delete("/deletebyid/:id", async function (req, res) {
   const id = Number(req.params.id);
   const deleteNote = await deleteANote(id);
   res.json({
