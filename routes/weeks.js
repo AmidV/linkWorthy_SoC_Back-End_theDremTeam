@@ -58,7 +58,7 @@ router.post("/:id", async function (req, res) {
   });
 });
 
-router.put("/:id", async function (req, res) {
+router.put("/updatetags/:id", async function (req, res) {
   const id = Number(req.params.id);
   const tags = req.body.tags;
   const updatedTag = await updateTags(id, tags);
@@ -69,7 +69,7 @@ router.put("/:id", async function (req, res) {
   });
 });
 
-router.put("/:id", async function (req, res) {
+router.put("/updatesummary/:id", async function (req, res) {
   const id = Number(req.params.id);
   const summary = req.body.summary;
   const updatedSummary = await updateSummary(id, summary);
@@ -80,7 +80,7 @@ router.put("/:id", async function (req, res) {
   });
 });
 
-router.put("/:id", async function (req, res) {
+router.put("/updatelink/:id", async function (req, res) {
   const id = Number(req.params.id);
   const link = req.body.link;
   const updatedLink = await updateLink(id, link);
@@ -91,7 +91,7 @@ router.put("/:id", async function (req, res) {
   });
 });
 
-router.put("/:id", async function (req, res) {
+router.put("/updateiscomplete/:id", async function (req, res) {
   const id = Number(req.params.id);
   const isComplete = req.body.isComplete;
   const updatedIsComplete = await updateIsComplete(id, isComplete);
