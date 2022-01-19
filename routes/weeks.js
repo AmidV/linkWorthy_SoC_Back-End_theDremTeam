@@ -7,6 +7,10 @@ import {
   getWeekNotes,
   addANoteToTheWeek,
   deleteANote,
+  updateTags,
+  updateSummary,
+  updateLink,
+  updateIsComplete,
 } from "../models/weeks.js";
 
 router.get("/", async (req, res) => {
@@ -51,6 +55,50 @@ router.post("/:id", async function (req, res) {
     success: true,
     message: `new note created`,
     payload: newNote,
+  });
+});
+
+router.put("/:id", async function (req, res) {
+  const id = Number(req.params.id);
+  const tags = req.body.tags;
+  const updatedTag = await updateTags(id, tags);
+  res.json({
+    success: true,
+    message: `tags updated`,
+    payload: updatedTag,
+  });
+});
+
+router.put("/:id", async function (req, res) {
+  const id = Number(req.params.id);
+  const summary = req.body.summary;
+  const updatedSummary = await updateSummary(id, summary);
+  res.json({
+    success: true,
+    message: `summary updated`,
+    payload: updatedSummary,
+  });
+});
+
+router.put("/:id", async function (req, res) {
+  const id = Number(req.params.id);
+  const link = req.body.link;
+  const updatedLink = await updateLink(id, link);
+  res.json({
+    success: true,
+    message: `link updated`,
+    payload: updatedLink,
+  });
+});
+
+router.put("/:id", async function (req, res) {
+  const id = Number(req.params.id);
+  const isComplete = req.body.isComplete;
+  const updatedIsComplete = await updateIsComplete(id, isComplete);
+  res.json({
+    success: true,
+    message: `isComplete updated`,
+    payload: updatedIsComplete,
   });
 });
 

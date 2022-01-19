@@ -29,7 +29,7 @@ export async function addANoteToTheWeek(week, tags, summary, link, isComplete) {
 export async function updateTags(id, tags) {
   const data = await query(
     `UPDATE information SET tags = $1 WHERE id = $2 RETURNING *;`,
-    [id, tags]
+    [tags, id]
   );
   return data.rows;
 }
@@ -37,7 +37,7 @@ export async function updateTags(id, tags) {
 export async function updateSummary(id, summary) {
   const data = await query(
     `UPDATE information SET summary = $1 WHERE id = $2 RETURNING *;`,
-    [id, summary]
+    [summary, id]
   );
   return data.rows;
 }
@@ -45,15 +45,15 @@ export async function updateSummary(id, summary) {
 export async function updateLink(id, link) {
   const data = await query(
     `UPDATE information SET link = $1 WHERE id = $2 RETURNING *;`,
-    [id, link]
+    [link, id]
   );
   return data.rows;
 }
 
-export async function getIsComplete(id, isComplete) {
+export async function updateIsComplete(id, isComplete) {
   const data = await query(
     `UPDATE information SET isComplete = $1 WHERE id = $2 RETURNING *;`,
-    [id, isComplete]
+    [isComplete, id]
   );
   return data.rows;
 }
