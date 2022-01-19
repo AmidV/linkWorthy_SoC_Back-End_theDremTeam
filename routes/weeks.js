@@ -3,6 +3,7 @@ const router = express.Router();
 
 import {
   getAllWeeks,
+  getAllNotes,
   getWeekNotes,
   addANoteToTheWeek,
   deleteANote,
@@ -44,6 +45,13 @@ router.post("/:id", async function (req, res) {
     message: `new note created`,
     payload: newNote,
   });
+});
+
+router.get("/information", async (req, res) => {
+  //Example: localhost:3000/cats/
+  const allNotes = await getAllNotes();
+
+  res.json({ success: true, message: `all notes`, payload: allNotes });
 });
 
 router.delete("/information/:id", async function (req, res) {
