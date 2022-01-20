@@ -7,6 +7,7 @@ import {
 	addResourceToWeekID,
 	getWeekByID,
 	deleteResourceByID,
+	updateIsCompleteStatus,
 } from "../models/weeks.js";
 
 //done
@@ -69,4 +70,13 @@ router.get("/:id", async (req, res) => {
 	});
 });
 
+router.patch("/:weekid/resources/:resourcesid", async function (req, res) {
+	const id = Number(req.params.resourcesid);
+	const updatedReource = await updateIsCompleteStatus(id);
+	res.json({
+		success: true,
+		message: `resource ${id} completion status updated`,
+		payload: updatedReource,
+	});
+});
 export default router;

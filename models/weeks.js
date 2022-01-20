@@ -41,3 +41,33 @@ export async function getWeekByID(id) {
 	const data = await query(`SELECT * FROM weeks WHERE id = $1;`, [id]);
 	return data.rows;
 }
+
+function changeIsCompleteStatus(status) {
+	if (status) {
+		const newStatus = false;
+		return newStatus;
+	} else {
+		const newStatus = true;
+		return newStatus;
+	}
+}
+
+//done
+export async function getResourceByID(id) {
+	const data = await query(`SELECT * FROM information WHERE id = $1;`, [id]);
+	return data.rows;
+}
+
+export async function updateIsCompleteStatus(id) {
+	const selectedResource = await getResourceByID(id);
+	const currentStatus = selectedResource[0].isComplete;
+	const isComplete = changeIsCompleteStatus(currentStatus);
+	const data = await query(
+		`UPDATE information 
+		SET isComplete = $1 
+		WHERE id = $2
+		RETURNING *;`,
+		[isComplete, id]
+	);
+	return data.rows;
+}
