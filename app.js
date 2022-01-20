@@ -23,7 +23,7 @@ app.use("/weeks", router);
 
 /** DO NOT CHANGE THIS ROUTE - it serves our front-end */
 app.get("/", function (req, res, next) {
-  res.render("index", { title: "Books" });
+	res.render("index", { title: "Books" });
 });
 
 export default app;

@@ -99,14 +99,11 @@ export const information = [
 		isComplete: false,
 	},
 ];
-
 /*
 sample = {
-	week: 1,
-	tags: "test",
-	summary: "test",
-	link: "test",
-	isComplete: false,
+	"tags": "thursdaytest1",
+	"summary": "thursdaytest1",
+	"link": "thursdaytest1",
+	"isComplete": false,
 };
-
 */
