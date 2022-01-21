@@ -8,7 +8,12 @@ export async function getAllWeeks() {
 
 //done
 export async function getResourcesForWeek(id) {
-	const data = await query(`SELECT * FROM information WHERE week = $1;`, [id]);
+	const data = await query(
+		`SELECT * FROM information 
+	WHERE week = $1
+	ORDER BY isComplete ASC, id ASC;`,
+		[id]
+	);
 	return data.rows;
 }
 
