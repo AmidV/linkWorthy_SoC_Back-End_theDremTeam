@@ -76,3 +76,12 @@ export async function updateIsCompleteStatus(id) {
 	);
 	return data.rows;
 }
+
+export async function updatePost(id, tags, summary, link) {
+	const data = await query(
+		`UPDATE information SET tags= $2, summary=$3, link =$4 WHERE id = $1
+		RETURNING *;`,
+		[id, tags, summary, link]
+	);
+	return data.rows;
+}
